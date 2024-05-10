@@ -1654,7 +1654,7 @@ p.explain .minibutton {
 
 @font-face {
     font-family: "octicons";
-    src: url("C:/Users/craig/Projects/Atom_BrownSim/assets/fonts/octicons.eot?#iefix") format("embedded-opentype"),url("C:/Users/craig/Projects/Atom_BrownSim/assets/fonts/octicons.woff") format("woff"),url("C:/Users/craig/Projects/Atom_BrownSim/assets/fonts/octicons.ttf") format("truetype"),url("C:/Users/craig/Projects/Atom_BrownSim/assets/fonts/octicons.svg#octicons") format("svg");
+    src: url("assets/fonts/octicons.eot?#iefix") format("embedded-opentype"),url("assets/fonts/octicons.woff") format("woff"),url("assets/fonts/octicons.ttf") format("truetype"),url("assets/fonts/octicons.svg#octicons") format("svg");
     font-weight: normal;
     font-style: normal
 }
@@ -2486,7 +2486,7 @@ p.explain .minibutton {
 }
 
 .button-image-down {
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/button-sprites.png");
+    background-image: url("assets/images/button-sprites.png");
     display: inline-block;
     height: 32px;
     left: 4px;
@@ -2497,13 +2497,13 @@ p.explain .minibutton {
 
 @media only screen and (resolution >= 2dppx) {
     .button-image-down {
-        background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/button-sprites@2x.png");
+        background-image: url("assets/images/button-sprites@2x.png");
         background-size: 64px 32px
     }
 }
 
 .button-image-github {
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/button-sprites.png");
+    background-image: url("assets/images/button-sprites.png");
     background-position: -32px 0;
     display: inline-block;
     height: 32px;
@@ -2515,7 +2515,7 @@ p.explain .minibutton {
 
 @media only screen and (resolution >= 2dppx) {
     .button-image-github {
-        background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/button-sprites@2x.png");
+        background-image: url("assets/images/button-sprites@2x.png");
         background-size: 64px 32px
     }
 }
@@ -2976,7 +2976,7 @@ form.contact-form input[type=submit] {
 }
 
 .illustration-contact {
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/contact.gif");
+    background-image: url("assets/images/contact.gif");
     height: 470px;
     position: relative;
     width: 410px
@@ -2984,7 +2984,7 @@ form.contact-form input[type=submit] {
 
 @media only screen and (resolution >= 2dppx) {
     .illustration-contact {
-        background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/contact@2x.gif");
+        background-image: url("assets/images/contact@2x.gif");
         background-size: 410px 470px
     }
 }
@@ -3086,7 +3086,7 @@ form.contact-form input[type=submit] {
 }
 
 .inspectocat {
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/inspectocat.png");
+    background-image: url("assets/images/inspectocat.png");
     display: block;
     height: 448px;
     width: 470px
@@ -3094,7 +3094,7 @@ form.contact-form input[type=submit] {
 
 @media only screen and (resolution >= 2dppx) {
     .inspectocat {
-        background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/inspectocat@2x.png");
+        background-image: url("assets/images/inspectocat@2x.png");
         background-size: 470px 448px
     }
 }
@@ -4070,7 +4070,7 @@ hr {
 }
 
 .logo-small {
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/logo-small.png");
+    background-image: url("assets/images/logo-small.png");
     height: 24px;
     margin: 4px 8px 4px 0;
     width: 114px
@@ -4078,7 +4078,7 @@ hr {
 
 @media only screen and (resolution >= 2dppx) {
     .logo-small {
-        background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/logo-small@2x.png");
+        background-image: url("assets/images/logo-small@2x.png");
         background-size: 114px 24px
     }
 }
@@ -4100,7 +4100,7 @@ hr {
 }
 
 .header .logo {
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/logo.png");
+    background-image: url("assets/images/logo.png");
     color: #574c4f;
     display: block;
     height: 60px;
@@ -4114,7 +4114,7 @@ hr {
 
 @media only screen and (resolution >= 2dppx) {
     .header .logo {
-        background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/logo@2x.png");
+        background-image: url("assets/images/logo@2x.png");
         background-size: 290px 60px
     }
 }
@@ -4396,7 +4396,7 @@ hr {
 }
 
 .nope {
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/soon.gif");
+    background-image: url("assets/images/soon.gif");
     height: 86px;
     left: 50%;
     line-height: 0;
@@ -4409,7 +4409,7 @@ hr {
 
 @media only screen and (resolution >= 2dppx) {
     .nope {
-        background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/soon@2x.gif");
+        background-image: url("assets/images/soon@2x.gif");
         background-size: 256px 86px
     }
 }
@@ -4688,7 +4688,7 @@ hr {
 
 .package-list .loading-overlay {
     background-color: rgba(255,255,255,.7);
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/octocat-spinner-64.gif");
+    background-image: url("assets/images/octocat-spinner-64.gif");
     background-position: center;
     background-repeat: no-repeat;
     display: none;
@@ -4699,7 +4699,7 @@ hr {
 
 @media only screen and (resolution >= 2dppx) {
     .package-list .loading-overlay {
-        background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/octocat-spinner-64@2x.gif");
+        background-image: url("assets/images/octocat-spinner-64@2x.gif");
         background-size: 64px 64px
     }
 }
@@ -5106,7 +5106,7 @@ input.search-input {
 
 #crop-modal .spinner {
     background-color: rgba(255,255,255,.7);
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/octocat-spinner-64.gif");
+    background-image: url("assets/images/octocat-spinner-64.gif");
     background-position: center;
     background-repeat: no-repeat;
     display: none;
@@ -5120,7 +5120,7 @@ input.search-input {
 
 @media only screen and (resolution >= 2dppx) {
     #crop-modal .spinner {
-        background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/octocat-spinner-64@2x.gif");
+        background-image: url("assets/images/octocat-spinner-64@2x.gif");
         background-size: 64px 64px
     }
 }
@@ -6013,7 +6013,7 @@ body.menu-active .modal-backdrop {
 }
 
 .hero-logo {
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/index-logo.svg"),url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/index-portal-sides.svg");
+    background-image: url("assets/images/index-logo.svg"),url("assets/images/index-portal-sides.svg");
     background-position: center;
     background-repeat: no-repeat;
     flex: 0 0 500px;
@@ -6187,7 +6187,7 @@ body.menu-active .modal-backdrop {
 }
 
 .section--realtime {
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/index-teletype-graphic.svg");
+    background-image: url("assets/images/index-teletype-graphic.svg");
     background-position: calc(50% - 1140px) center;
     background-repeat: no-repeat
 }
@@ -6203,7 +6203,7 @@ body.menu-active .modal-backdrop {
 }
 
 .section--github {
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/index-github-graphic.svg");
+    background-image: url("assets/images/index-github-graphic.svg");
     background-position: calc(50% + 550px) center;
     background-repeat: no-repeat
 }
@@ -6261,7 +6261,7 @@ body.menu-active .modal-backdrop {
 
 .section--contact {
     background-color: #2c2a2b;
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/index-rocket.svg");
+    background-image: url("assets/images/index-rocket.svg");
     background-position: calc(50% + 380px) 60px;
     background-repeat: no-repeat;
     border-top: 1px solid #1a191a;
