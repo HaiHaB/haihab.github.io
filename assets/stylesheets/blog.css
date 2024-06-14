@@ -1558,7 +1558,7 @@ body {
 }
 
 .logo-small {
-    background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/logo-small.png");
+    background-image: url("/assets/images/logo-small.png");
     height: 24px;
     margin: 4px 8px 4px 0;
     width: 114px
@@ -1566,7 +1566,7 @@ body {
 
 @media only screen and (resolution >= 2dppx) {
     .logo-small {
-        background-image: url("C:/Users/craig/Projects/Atom_BrownSim/assets/images/logo-small@2x.png");
+        background-image: url("/assets/images/logo-small@2x.png");
         background-size: 114px 24px
     }
 }

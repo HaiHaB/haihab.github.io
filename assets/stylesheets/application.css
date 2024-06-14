@@ -6507,6 +6507,19 @@ body.menu-active .modal-backdrop {
     min-width: auto
 }
 
+#avatar-container {
+  height: 500px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#avatar-loading {
+  font-size: 3em;
+}
+
 @media(width <= 900px) {
     .is-responsive .top-bar {
         height: auto;
