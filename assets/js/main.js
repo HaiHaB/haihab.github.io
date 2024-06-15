@@ -8,7 +8,7 @@ window.onload = () => loadModel();
 function loadModel() {
 	const loader = new FBXLoader();
 	console.log(`Loading model ...`);
-	loader.load("./assets/3d/humanhead.fbx",
+	loader.load("./assets/3D/humanhead.fbx",
 		(fbx) => {
 			setupScene(fbx);
 			document.getElementById('avatar-loading').style.display = 'none';
