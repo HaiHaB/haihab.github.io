@@ -1,186 +1,143 @@
-console.log(`Loading model... `);
+
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { FBXLoader } from "three/addons/loaders/FBXLoader.js";
 
 window.onload = () => loadModel();
 
 function loadModel() {
-  const loader = new GLTFLoader();
-  loader.load('/assets/3D/avatar.glb',
-    (gltf) => {
-      setupScene(gltf);
-      document.getElementById('avatar-loading').style.display = 'none';
-    },
-    (xhr) => {
-      const percentCompletion = Math.round((xhr.loaded / xhr.total) * 100);
-      document.getElementById('avatar-loading').innerText = `LOADING... ${percentCompletion}%`
-      console.log(`Loading model... ${percentCompletion}%`);
-    },
-    (error) => {
-      console.log(error);
-    }
-  );
-	console.log(`in loadModel `);
+	const loader = new FBXLoader();
+	console.log(`Loading model ...`);
+	loader.load("./assets/3d/humanhead.fbx",
+		(fbx) => {
+			setupScene(fbx);
+			document.getElementById('avatar-loading').style.display = 'none';
+		},
+		(xhr) => {
+			const percentCompletion = Math.round((xhr.loaded / xhr.total) * 100);
+			document.getElementById('avatar-loading').innerText = `LOADING... ${percentCompletion}%`
+			console.log(`Loading model... ${percentCompletion}%`);
+		},
+		(error) => {
+			console.log(error);
+		}
+	);
 }
 
-function setupScene(gltf) {
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true
-    });
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
+function setupScene(fbx) {
+	let mesh;
+	let mouseX = 0;
+	let mouseY = 0;
+	let targetX = 0;
+	let targetY = 0;
 
-    const container = document.getElementById('avatar-container');
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+	// Container set up
+	const container = document.getElementById('avatar-container');
 
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+	const renderer = new THREE.WebGLRenderer({ antialias: true ,  alpha: true});
+	renderer.setPixelRatio(window.devicePixelRatio);
+	renderer.setSize(container.clientWidth, container.clientHeight);
+	renderer.setAnimationLoop(animate);
+	// renderer.setClearColor(0x343233);
+	container.appendChild(renderer.domElement);
+	renderer.shadowMap.enabled = true;
 
-    container.appendChild(renderer.domElement);
 
-    // Camera setup
-    const camera = new THREE.PerspectiveCamera(
-      45, container.clientWidth / container.clientHeight);
-    camera.position.set(0.2, 0.5, 1);
+	// Camera setup
+		const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 1, 2000);
+	camera.position.set(0, 0, 50);
 
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.enablePan = false;
-    controls.enableZoom = false;
-    controls.minDistance = 3;
-    controls.minPolarAngle = 1.4;
-    controls.maxPolarAngle = 1.4;
-    controls.target = new THREE.Vector3(0, 0.75, 0);
-    controls.update();
+	const controls = new OrbitControls(camera, renderer.domElement);
+	controls.enableDamping = true;
+	controls.enablePan = false;
+	controls.enableZoom = false;
+	controls.minDistance = 3;
+	controls.minPolarAngle = 1.4;
+	controls.maxPolarAngle = 1.4;
+	controls.target = new THREE.Vector3(0, 0.75, 0);
+	controls.update();
 
-    // Scene setup
-    const scene = new THREE.Scene();
+	// Scene setup
+	const scene = new THREE.Scene();
 
-    // Lighting setup
-    scene.add(new THREE.AmbientLight());
+	// Lighting setup;
+	// scene.background = new THREE.Color(0x343233);
 
-    const spotlight = new THREE.SpotLight(0xffffff, 20, 8, 1);
-    spotlight.penumbra = 0.5;
-    spotlight.position.set(0, 4, 2);
-    spotlight.castShadow = true;
-    scene.add(spotlight);
+	// Load avatar
+	fbx.traverse(function (child) {
+		if (child.isMesh) {
+			// Original material
+			child.material = new THREE.MeshStandardMaterial({
+				// color: 0x343233,
+				side: THREE.FrontSide,
+			});
 
-    const keyLight = new THREE.DirectionalLight(0xffffff, 2);
-    keyLight.position.set(1, 1, 2);
-    keyLight.lookAt(new THREE.Vector3());
-    scene.add(keyLight);
+			// Create wireframe geometry and material
+			const wireframeGeometry = new THREE.WireframeGeometry(child.geometry);
+			const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xffffff });
+			const wireframe = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
 
-    // Load avatar
-    const avatar = gltf.scene;
-    avatar.traverse((child) => {
-      if (child.isMesh) {
-        child.castShadow = true;
-        child.receiveShadow = true;
-      }
-    });
-    scene.add(avatar);
+			// Add the wireframe as a child of the mesh
+			child.add(wireframe);
+		}
+	});
+	scene.add(fbx);
 
-    // Create pedestal
-    const groundGeometry = new THREE.CylinderGeometry(0.6, 0.6, 0.1, 64);
-    const groundMaterial = new THREE.MeshStandardMaterial();
-    const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
-    groundMesh.castShadow = false;
-    groundMesh.receiveShadow = true;
-    groundMesh.position.y -= 0.05;
-    scene.add(groundMesh);
+	// Adjust the model scale and position if necessary
+	fbx.position.set(0, 0, 0); // Center the object
 
-    // Load animations
-    const mixer = new THREE.AnimationMixer(avatar);
-    const clips = gltf.animations;
-    const waveClip = THREE.AnimationClip.findByName(clips, 'waving');
-    const stumbleClip = THREE.AnimationClip.findByName(clips, 'stagger');
-    const waveAction = mixer.clipAction(waveClip);
-    const stumbleAction = mixer.clipAction(stumbleClip);
+	// Compute the bounding box to center the model
+	const box = new THREE.Box3().setFromObject(fbx);
+	const center = box.getCenter(new THREE.Vector3());
+	fbx.position.sub(center); // Center the object
 
-    let isStumbling = false;
-    const raycaster = new THREE.Raycaster();
-    container.addEventListener('mousedown', (ev) => {
-      const coords = {
-        x: (ev.offsetX / container.clientWidth) * 2 - 1,
-        y: -(ev.offsetY / container.clientHeight) * 2 + 1
-      };
+	scene.add(fbx);
+	mesh = fbx;
 
-      raycaster.setFromCamera(coords, camera);
-      const intersections = raycaster.intersectObject(avatar);
+	document.addEventListener("mousemove", onDocumentMouseMove);
+	window.addEventListener("resize", onWindowResize);
 
-      if (intersections.length > 0) {
-        if (isStumbling) return;
+	function onWindowResize() {
+		renderer.setSize(container.clientWidth, container.clientHeight);
 
-        isStumbling = true;
-        stumbleAction.reset();
-        stumbleAction.play();
-        waveAction.crossFadeTo(stumbleAction, 0.3);
+		camera.aspect = container.clientWidth / container.clientHeight;
+		camera.updateProjectionMatrix();
+	}
 
-        setTimeout(() => {
-          waveAction.reset();
-          waveAction.play();
-          stumbleAction.crossFadeTo(waveAction, 1);
-          setTimeout(() => isStumbling = false, 1000);
-        }, 4000)
-      }
-    });
+	function onDocumentMouseMove(event) {
+		const rect = container.getBoundingClientRect();
+		let clientX = event.clientX;
+		let clientY = event.clientY;
 
-    window.addEventListener('resize', () => {
-      camera.aspect = container.clientWidth / container.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
-    });
+		if (clientX < rect.left) {
+			clientX = rect.left;
+		} else if (clientX > rect.right) {
+			clientX = rect.right;
+		}
 
-    const clock = new THREE.Clock();
-    function animate() {
-      requestAnimationFrame(animate);
-      mixer.update(clock.getDelta());
-      renderer.render(scene, camera);
-    }
+		if (clientY < rect.top) {
+			clientY = rect.top;
+		} else if (clientY > rect.bottom) {
+			clientY = rect.bottom;
+		}
 
-    animate();
-    waveAction.play();
+		mouseX = clientX - container.clientWidth / 2;
+		mouseY = clientY - container.clientHeight / 2;
+	}
+
+	function animate() {
+		render();
+	}
+
+	function render() {
+		targetX = mouseX * 0.001;
+		targetY = mouseY * 0.0003;
+
+		if (mesh) {
+			mesh.rotation.y += 0.05 * (targetX - mesh.rotation.y);
+			mesh.rotation.x += 0.05 * (targetY - mesh.rotation.x);
+		}
+
+		renderer.render(scene, camera);
+	}
 }
-
-
-// import * as THREE from 'three';
-
-// const scene = new THREE.Scene();
-// const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-
-// const renderer = new THREE.WebGLRenderer();
-// renderer.setSize( window.innerWidth, window.innerHeight );
-// renderer.setAnimationLoop( animate );
-// document.body.appendChild( renderer.domElement );
-
-// const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-// const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-// const cube = new THREE.Mesh( geometry, material );
-// scene.add( cube );
-
-// camera.position.z = 5;
-
-// function animate() {
-
-// 	cube.rotation.x += 0.01;
-// 	cube.rotation.y += 0.01;
-
-// 	renderer.render( scene, camera );
-
-// }
-
-// import WebGL from 'three/addons/capabilities/WebGL.js';
-
-// if ( WebGL.isWebGLAvailable() ) {
-
-// 	// Initiate function or other initializations here
-// 	animate();
-
-// } else {
-
-// 	const warning = WebGL.getWebGLErrorMessage();
-// 	document.getElementById( 'container' ).appendChild( warning );
-
-// }
