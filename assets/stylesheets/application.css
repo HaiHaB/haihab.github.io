@@ -6203,7 +6203,7 @@ body.menu-active .modal-backdrop {
 }
 
 .section--github {
-    background-image: url("/assets/images/index-github-graphic.svg");
+    /* background-image: url("/assets/images/index-github-graphic.svg"); */
     background-position: calc(50% + 550px) center;
     background-repeat: no-repeat
 }
