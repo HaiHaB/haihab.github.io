@@ -6509,11 +6509,18 @@ body.menu-active .modal-backdrop {
 
 #avatar-container {
   height: 500px;
+  width: 100%;
   margin-top: 32px;
   margin-bottom: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+    position: relative;
+}
+
+#rotation-matrix {
+    width: 100px;
+    height: 100px;
 }
 
 @media(width <= 900px) {
