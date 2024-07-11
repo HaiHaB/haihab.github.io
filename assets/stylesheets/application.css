@@ -4009,7 +4009,7 @@ hr {
     border-radius: 3px
 }
 
-.top-bar {
+/* .top-bar {
     background-color: #584b4f;
     color: #efeae1;
     font-size: 14px;
@@ -4067,7 +4067,7 @@ hr {
 
 .top-bar .minibutton {
     margin: 4px 0
-}
+} */
 
 .logo-small {
     background-image: url("/assets/images/logo-small.png");
@@ -4127,7 +4127,7 @@ hr {
     padding: 5px 10px
 }
 
-.navigation {
+/* .navigation {
     list-style-type: none;
     margin: 0;
     padding: 0
@@ -4152,7 +4152,7 @@ hr {
 
 .navigation a:hover {
     text-decoration: none
-}
+} */
 
 .footer {
     background-color: #efeae1;
