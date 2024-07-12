@@ -48,25 +48,3 @@
      });
 
 })();
-
-class Careers extends HTMLElement {
-  constructor() {
-    super();
-  }
-
-  connectedCallback() {
-    this.innerHTML = `
-				<p><b>Top 3 reasons to join us?</b></p>
-					<li>Exceptional professional growth opportunities in a tech-focused company, allowing you to enhance your skills at an accelerated pace.</li>
-					<li>Flat structure, simple processes & transparency</li>
-					<li>Fully remote working experience</li>
-
-				</ul>
-
-				<p>If you wish to discuss this role further, then please send us an email at <a href= "mailto: craig.brown@brownsim.io"> craig.brown@brownsim.io</a></p>
-				</div>
-    `;
-  }
-}
-
-customElements.define('careers-component', Careers);
