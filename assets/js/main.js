@@ -49,21 +49,24 @@
 
 })();
 
-class MyNavigation extends HTMLElement {
-	connectedCallBack () {
-		this.innerHTML = `
-			<div class="wrapper no-pad">
-				<ul class="navigation">
-					<li>
-						<h1><a href="/" class="logo-small" title="Atom: A hackable text editor for the 21st Century"></a></h1>
-					</li>
-					<li><a href="">ProCue</a></li>
-					<li><a href="consulting/consulting.html">Leadership</a></li>
-					<li><a href="outsourcing/outsourcing.html">Capabilities</a></li>
+class Careers extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
+				<p><b>Top 3 reasons to join us?</b></p>
+					<li>Exceptional professional growth opportunities in a tech-focused company, allowing you to enhance your skills at an accelerated pace.</li>
+					<li>Flat structure, simple processes & transparency</li>
+					<li>Fully remote working experience</li>
+
 				</ul>
-			</div>
-		 `
-	}
+
+				<p>If you wish to discuss this role further, then please send us an email at <a href= "mailto: craig.brown@brownsim.io"> craig.brown@brownsim.io</a></p>
+				</div>
+    `;
+  }
 }
 
-customElements.define('myNavigation', MyNavigation)
+customElements.define('careers-component', Careers);
