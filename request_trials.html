@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>BrownSim - ProCue</title>
+
+	<link rel="stylesheet" href="../assets/stylesheets/application.css?a=1">
+
+	<link rel="preload" href="../assets/stylesheets/application.css" as="style">
+
+
+	<link rel="shortcut icon" href="">
+
+	<meta name="description"
+		content="ProCue.">
+	<meta name="generator" content="Eleventy">
+
+	<meta property="og:url" content="https://brownsim.io">
+	<meta property="og:site_name" content="ProCue">
+	<meta property="og:title" content="Hackable motion cueing for the 21st Century">
+	<meta property="og:description"
+		content="ProCue">
+	<meta property="og:type" content="website">
+	<meta property="og:author" content="Craig">
+	<meta property="og:image" content="../assets/images/atom-mark@1200x630.png">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<script src="/assets/js/header.js" type = "text/javascript" defer></script>
+
+</head>
+
+<body class="is-responsive">
+
+	<div class="footer-push">
+		<header-component></header-component>
+		<div>
+			<div class="welcome">
+				<div class="wrapper">
+
+					<label for="userKey">User Key: </label> <br><br>
+					<input type="text" id="userKey" name="userKey"  size=100><br><br><br>
+
+					<button class="welcome-button" onclick="myFunction()"> <span class="octicon octicon-move-down"></span>Download</button>
+
+					<p id="demo"></p>
+
+					<!-- a userKey that works: key/eyJhY2NvdW50Ijp7ImlkIjoiMjFmYjBlMzgtOGE5ZS00NDVhLTk0ZGMtZTVlODYyMTY3MmZkIn0sInByb2R1Y3QiOnsiaWQiOiJmOTgxNzlkYi1hNDAzLTRmZTUtOTgyOC0wMWJjMTIyZDc2YjQifSwicG9saWN5Ijp7ImlkIjoiOTEyNDM1YTctZWMyMS00OGQ2LWExM2MtZWExOGY4ODM5MjBiIiwiZHVyYXRpb24iOjMxNTM2MDAwfSwidXNlciI6bnVsbCwibGljZW5zZSI6eyJpZCI6IjQwNGEwNmM3LWQ0NzItNDJlZS04OTcwLWM5M2UwYjgyMTdmOSIsImNyZWF0ZWQiOiIyMDIzLTExLTEwVDAyOjE1OjI4LjEwMFoiLCJleHBpcnkiOm51bGx9fQ==.xsqhM-FzocuScydo6_Z9QALPRkjm_UgSLijonBrkQ6P1LzswtdrkHkG96KJ76UeBXbf6lArsVwvOQJeTJC3dDQ== -->
+					<!-- a link that works: https://get.keygen.sh/21fb0e38-8a9e-445a-94dc-e5e8621672fd/7c60b67b-5d03-4c08-9d7d-147499022c3b/0ff438dc-ac3d-4915-b008-73853fbfba8e?auth=license:key/eyJhY2NvdW50Ijp7ImlkIjoiMjFmYjBlMzgtOGE5ZS00NDVhLTk0ZGMtZTVlODYyMTY3MmZkIn0sInByb2R1Y3QiOnsiaWQiOiJmOTgxNzlkYi1hNDAzLTRmZTUtOTgyOC0wMWJjMTIyZDc2YjQifSwicG9saWN5Ijp7ImlkIjoiOTEyNDM1YTctZWMyMS00OGQ2LWExM2MtZWExOGY4ODM5MjBiIiwiZHVyYXRpb24iOjMxNTM2MDAwfSwidXNlciI6bnVsbCwibGljZW5zZSI6eyJpZCI6IjQwNGEwNmM3LWQ0NzItNDJlZS04OTcwLWM5M2UwYjgyMTdmOSIsImNyZWF0ZWQiOiIyMDIzLTExLTEwVDAyOjE1OjI4LjEwMFoiLCJleHBpcnkiOm51bGx9fQ==.xsqhM-FzocuScydo6_Z9QALPRkjm_UgSLijonBrkQ6P1LzswtdrkHkG96KJ76UeBXbf6lArsVwvOQJeTJC3dDQ== -->
+					<!-- a curl request that works (but it doesnt really download everything): curl -G -X GET https://get.keygen.sh/21fb0e38-8a9e-445a-94dc-e5e8621672fd/7c60b67b-5d03-4c08-9d7d-147499022c3b/0ff438dc-ac3d-4915-b008-73853fbfba8e -d auth=license:key/eyJhY2NvdW50Ijp7ImlkIjoiMjFmYjBlMzgtOGE5ZS00NDVhLTk0ZGMtZTVlODYyMTY3MmZkIn0sInByb2R1Y3QiOnsiaWQiOiJmOTgxNzlkYi1hNDAzLTRmZTUtOTgyOC0wMWJjMTIyZDc2YjQifSwicG9saWN5Ijp7ImlkIjoiOTEyNDM1YTctZWMyMS00OGQ2LWExM2MtZWExOGY4ODM5MjBiIiwiZHVyYXRpb24iOjMxNTM2MDAwfSwidXNlciI6bnVsbCwibGljZW5zZSI6eyJpZCI6IjQwNGEwNmM3LWQ0NzItNDJlZS04OTcwLWM5M2UwYjgyMTdmOSIsImNyZWF0ZWQiOiIyMDIzLTExLTEwVDAyOjE1OjI4LjEwMFoiLCJleHBpcnkiOm51bGx9fQ==.xsqhM-FzocuScydo6_Z9QALPRkjm_UgSLijonBrkQ6P1LzswtdrkHkG96KJ76UeBXbf6lArsVwvOQJeTJC3dDQ== --output Atom_BrownSim.tgz -->
+					<!-- Reference Page: https://keygen.sh/docs/api/short-urls/ -->
+					<script>
+						function myFunction() {
+							userKey = document.getElementById("userKey").value;
+							document.getElementById("demo").innerHTML = "Downloading your software for userKey " + userKey;
+ 							window.location.href = "https://get.keygen.sh/21fb0e38-8a9e-445a-94dc-e5e8621672fd/7c60b67b-5d03-4c08-9d7d-147499022c3b/0ff438dc-ac3d-4915-b008-73853fbfba8e?auth=license:" + userKey;
+						}
+					</script>
+					<!-- </form> -->
+
+				</div>
+
+		</div>
+
+		<div class="footer-pad"></div>
+	</div>
+
+
+	<footer-component></footer-component>
+
+</body>
+
+</html>
